@@ -1,0 +1,21 @@
+def viz_dist_num_1D(x,
+                    lenght=15,
+                    height=5,
+                    x_label="x_label",
+                    y_label="y_label"):
+    """
+    Use: Numeric
+    Input:x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label
+    Output:Distplot, Boxplot
+    """
+    fig, ax = plt.subplots(figsize=(lenght, height), ncols=2, nrows=1)
+    sns.distplot(a=x, rug=True, ax=ax[0])
+    ax[0].set_title("Data Distribution")
+    ax[0].set_xlabel(x_label)
+    ax[0].set_ylabel('Probability')
+    sns.boxplot(x=x, ax=ax[1])
+    ax[1].set_title("Outliers")
+    ax[1].set_xlabel(x_label)
+    ax[1].set_ylabel('Quartiles')
+    plt.tight_layout()
+    return plt.show()
