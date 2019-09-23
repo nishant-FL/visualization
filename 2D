@@ -1,14 +1,24 @@
-def viz_dist_2dscatter(x_data,y_data,lenght=15,height=5,x_label="x_label",y_label="y_label"):
-    fig, ax = plt.subplots(figsize=(lenght,height), ncols=3, nrows=1)
-    sns.distplot(a=x_data,rug=True,ax=ax[0])
+def viz_dist_2dscatter(x,
+                       y,
+                       lenght=15,
+                       height=5,
+                       x_label="x_label",
+                       y_label="y_label"):
+    """
+    Use: Numeric Vs Numeric Visualization
+    Input: x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label
+    Output: Distplot, Boxplot, Scatter Plot 
+    """
+    fig, ax = plt.subplots(figsize=(lenght, height), ncols=3, nrows=1)
+    sns.distplot(a=x, rug=True, ax=ax[0])
     ax[0].set_title("Data Distribution")
     ax[0].set_xlabel(x_label)
     ax[0].set_ylabel('Probability')
-    sns.boxplot(x=x_data,ax=ax[1])
+    sns.boxplot(x=x, ax=ax[1])
     ax[1].set_title("Outliers")
     ax[1].set_xlabel(x_label)
     ax[1].set_ylabel('Quartiles')
-    sns.scatterplot(x=x_data,y=y_data,ax=ax[2])
+    sns.scatterplot(x=x, y=y, ax=ax[2])
     ax[2].set_title("Relationship")
     ax[2].set_xlabel(x_label)
     ax[2].set_ylabel(y_label)
