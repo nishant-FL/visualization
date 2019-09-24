@@ -1,11 +1,7 @@
-def viz_dist_num_1D(x,
-                    lenght=15,
-                    height=5,
-                    x_label="x_label",
-                    y_label="y_label"):
+def viz_num_dist_1D(x, lenght=15, height=5, x_label="x_label",save_as="plot"):
     """
-    Use: Numeric
-    Input:x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label
+    Use: Single Numeric Column 
+    Input:x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label
     Output:Distplot, Boxplot
     """
     fig, ax = plt.subplots(figsize=(lenght, height), ncols=2, nrows=1)
@@ -18,4 +14,4 @@ def viz_dist_num_1D(x,
     ax[1].set_xlabel(x_label)
     ax[1].set_ylabel('Quartiles')
     plt.tight_layout()
-    return plt.show()
+    return plt.show(),fig.savefig(f'{save_as}.png')
