@@ -1,12 +1,13 @@
-def viz_dist_2dscatter(x,
-                       y,
-                       lenght=15,
-                       height=5,
-                       x_label="x_label",
-                       y_label="y_label"):
+def viz_num_dist_2Dscatter(x,
+                           y,
+                           lenght=15,
+                           height=5,
+                           x_label="x_label",
+                           y_label="y_label",
+                           save_as="plot"):
     """
     Use: Numeric Vs Numeric Visualization
-    Input: x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label
+    Input: x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label,save_as="plot"
     Output: Distplot, Boxplot, Scatter Plot 
     """
     fig, ax = plt.subplots(figsize=(lenght, height), ncols=3, nrows=1)
@@ -23,4 +24,5 @@ def viz_dist_2dscatter(x,
     ax[2].set_xlabel(x_label)
     ax[2].set_ylabel(y_label)
     plt.tight_layout()
-    return plt.show()
+    return plt.show(),fig.savefig(f'{save_as}.png')
+    
