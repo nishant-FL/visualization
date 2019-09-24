@@ -8,7 +8,7 @@ def viz_num_dist_2Dscatter(x,
     """
     Use: Numeric Vs Numeric Visualization
     Input: x=x_data,y=y_data,lenght= lenght of plot, height= height of plot,x_label=x_label,y_label=y_label,save_as="plot"
-    Output: Distplot, Boxplot, Scatter Plot 
+    Output: Distplot, Boxplot, Scatter Plot, Saved Plot
     """
     fig, ax = plt.subplots(figsize=(lenght, height), ncols=3, nrows=1)
     sns.distplot(a=x, rug=True, ax=ax[0])
