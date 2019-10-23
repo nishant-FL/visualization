@@ -1,0 +1,73 @@
+class Visualization:
+    
+    """
+    functions to visulize data
+    """
+    def __init__(self):
+        pass
+    
+    def numeric_distribution(self,x,save_as,lenght=15, height=5, x_label="x_label",fontsize = 12, labelsize = 15, titlesize =20):
+        """
+        `scatter plot 
+        `for numeric data distribution
+        """
+        fig, ax = plt.subplots(figsize=(lenght, height), ncols=2, nrows=1)
+        
+        sns.distplot(a=x, rug=True, ax=ax[0])
+        ax[0].set_title("Data Distribution")
+        ax[0].set_xlabel(x_label)
+        ax[0].set_ylabel('Probability')
+        
+        sns.boxplot(x=x, ax=ax[1])
+        ax[1].set_title("Outliers")
+        ax[1].set_xlabel(x_label)
+        ax[1].set_ylabel('Quartiles')
+        plt.tight_layout()
+        return plt.show(),fig.savefig(f'{save_as}.png'), print(f"summary statistic for {x_label}\n",x.describe())
+    
+    def catagorical_composition (self,x,save_as,radius=1,lenght=16,height=8,x_label="x_label",fontsize = 12, labelsize = 15, titlesize =20):
+        """
+        Use: Single Categorical Data Composition
+    
+        Input:
+        x =  categorical data 
+        radius= radius of pie chart
+        lenght= lenght of the plot area
+        height= height of the plot area
+        x_label="x_label"
+        save_as="name of the file"
+
+        Output: 
+        1. Compotion of categorical data in Count Plot - Bar
+        2. Pie chart for % Composition
+        3. Saved Plot
+
+        """
+ 
+        SMALL_SIZE = fontsize
+        MEDIUM_SIZE = labelsize
+        BIGGER_SIZE = titlesize
+
+        plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+        plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+        plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+        plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+        plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+        plt.rc('axes', titlesize=BIGGER_SIZE)    # fontsize of the axes title
+        plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+
+        fig, ax = plt.subplots(figsize=(lenght, height), ncols=2, nrows=1)
+        sns.countplot(x=x, order=x.value_counts().index, ax=ax[0])
+        ax[0].set_title(f"{x_label} Composition")
+        ax[0].set_xlabel(x_label)
+        ax[1].set_title(f"{x_label} % Composition")
+        ax[1] = plt.pie(x=x.value_counts().values,
+                    labels=x.value_counts().index,
+                    autopct='%1.1f%%',
+                    radius=radius)
+
+        plt.tight_layout()
+        return plt.show(), fig.savefig(f'{save_as}.png'), print(f"summary statistic for {x_label}\n",x.describe())
+    
+    def cat_cat_comparision_2d(self):
+        print("# pending")
